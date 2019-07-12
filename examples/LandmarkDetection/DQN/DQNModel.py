@@ -85,6 +85,7 @@ class Model2D(ModelDesc):
         summary.add_param_summary(('conv.*/W', ['histogram', 'rms']),
                                   ('fc.*/W', ['histogram', 'rms']))   # monitor all W
         summary.add_moving_summary(cost)
+        return cost
 
     def _get_optimizer(self):
         lr = tf.get_variable('learning_rate',initializer=1e-3, trainable=False)
@@ -180,6 +181,7 @@ class Model3D(ModelDesc):
         summary.add_param_summary(('conv.*/W', ['histogram', 'rms']),
                                   ('fc.*/W', ['histogram', 'rms']))  # monitor all W
         summary.add_moving_summary(cost)
+        return cost
 
     def optimizer(self):
         lr = tf.get_variable('learning_rate', initializer=1e-3, trainable=False)
