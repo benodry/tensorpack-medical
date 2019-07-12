@@ -16,6 +16,7 @@ import sys
 import time
 import argparse
 from collections import deque
+from pdb import set_trace
 
 import tensorflow as tf
 from medical import MedicalPlayer, FrameStack
@@ -181,6 +182,8 @@ def get_config(files_list):
 
 if __name__ == '__main__':
 
+    print(os.getcwd())
+    #set_trace()
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--gpu', help='comma separated list of GPU(s) to use.')
@@ -205,7 +208,8 @@ if __name__ == '__main__':
 
 
     args = parser.parse_args()
-
+    print("Arg.gpu=",args.gpu)
+    print("Arg.task=",args.task)
     if args.gpu:
         os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 
@@ -225,7 +229,8 @@ if __name__ == '__main__':
                                 task='play')
     NUM_ACTIONS = init_player.action_space.n
     num_files = init_player.files.num_files
-
+    
+    set_trace()
     if args.task != 'train':
         assert args.load is not None
         pred = OfflinePredictor(PredictConfig(
