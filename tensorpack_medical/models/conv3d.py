@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # File: conv3d.py
-# Author: Yuxin Wu <ppwwyyxxc@gmail.com>
-# Modified: Amir Alansary <amiralansary@gmail.com>
+# Author: Amir Alansary <amiralansary@gmail.com>
 
 import tensorflow as tf
 from tensorpack import layer_register, VariableHolder

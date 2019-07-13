@@ -87,7 +87,7 @@ class Model2D(ModelDesc):
         summary.add_moving_summary(cost)
         return cost
 
-    def _get_optimizer(self):
+    def optimizer(self):
         lr = tf.get_variable('learning_rate',initializer=1e-3, trainable=False)
         opt = tf.train.AdamOptimizer(lr, epsilon=1e-3)
         return optimizer.apply_grad_processors(
@@ -106,8 +106,8 @@ class Model2D(ModelDesc):
                 ops.append(v.assign(G.get_tensor_by_name(new_name + ':0')))
         return tf.group(*ops, name='update_target_network')
 
-    
-    
+
+
 class Model3D(ModelDesc):
     def __init__(self, image_shape, channel, method, num_actions, gamma):
         """
